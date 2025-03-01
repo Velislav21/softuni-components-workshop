@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 
-import { request } from "../../fetch-api/requester"
+import userService from "../../fetch-api/userService"
+
 import Button from "../button/Button"
 import UserDetailsModal from "../user/UserDetailsModal"
 import AddEditUserModal from "../user/AddEditUserModal"
@@ -11,7 +12,7 @@ export default function TableRow() {
 
     useEffect(() => {
         (async () => {
-            const data = await request('http://localhost:3030/jsonstore/users');
+            const data = await userService.getAll();
             setUsers(data);
         })()
 

@@ -1,9 +1,13 @@
 import TableRow from "./TableRow"
-import AddEditUserModal from "../user/AddEditUserModal"
-export default function TBody () {
+
+export default function TBody({ users }) {
+    console.log(users)
     return (
         <tbody>
-        <TableRow />
-    </tbody>
+            {users.map((user) => (
+
+                <TableRow key={user._id} {...user}/>
+            ))}
+        </tbody>
     )
 }

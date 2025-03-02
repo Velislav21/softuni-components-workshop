@@ -1,15 +1,15 @@
 import Button from "../button/Button"
 import InputField from "../input/InputField"
 
-export default function AddEditUserModal() {
+export default function AddEditUserModal({ hideModal, action, actionFn }) {
     return (
         <div className="overlay">
-            <div className="backdrop"></div>
+            <div className="backdrop" onClick={hideModal}></div>
             <div className="modal">
                 <div className="user-container">
                     <header className="headers">
-                        <h2>Edit User/Add User</h2>
-                        <Button className="btn close">
+                        <h2>{action === 'create' ? 'Create User' : 'Edit User'}</h2>
+                        <Button className="btn close" onClick={hideModal}>
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="xmark"
                                 className="svg-inline--fa fa-xmark" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                 <path fill="currentColor"
@@ -95,9 +95,22 @@ export default function AddEditUserModal() {
                             </div>
                         </div>
                         <div id="form-actions">
-                            <Button id="action-save" className="btn" type="submit">Save</Button>
-                            <Button id="action-cancel" className="btn" type="button">Cancel</Button>
+                            <Button
+                                id="action-save"
+                                className="btn"
+                                type="submit"
+                                onClick={actionFn}
+                            >
+                                {action === 'create' ? 'Create': 'Edit'}</Button>
+                            <Button
+                                id="action-cancel"
+                                className="btn"
+                                type="button"
+                                onClick={hideModal}
+                            >
+                                Cancel</Button>
                         </div>
+
                     </form>
                 </div>
             </div>

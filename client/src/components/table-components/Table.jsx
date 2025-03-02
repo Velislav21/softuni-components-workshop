@@ -6,15 +6,14 @@ import THead from "./TableHead"
 import TableRow from "./TableRow"
 import UserDetailsModal from '../user/UserDetailsModal'
 import DeleteUserModal from '../user/DeleteUserModal'
-import Button from "../button/Button"
 import Spinner from "../spinner/Spinner"
 
 export default function Table() {
 
     const [users, setUsers] = useState([]);
+    const [showCreateModal, setShowCreateModal] = useState(false);
     const [userIdDetails, setUserIdDetails] = useState(null);
     const [userIdDelete, setUserIdDelete] = useState(null);
-
 
     function showInfoButtonModal(id) {
         setUserIdDetails(id);
@@ -36,15 +35,16 @@ export default function Table() {
 
         await userService.deleteUser(id);
         setUsers(prevUsers => prevUsers.filter(user => user._id !== id))
-        
+
         setUserIdDelete(null);
 
-
+        // !TODO add error handling
     }
 
     useEffect(() => {
         (async () => {
             const data = await userService.getAll();
+            console.log(data)
             setUsers(data);
         })()
 
@@ -54,7 +54,7 @@ export default function Table() {
         <>
 
             {userIdDetails && <UserDetailsModal
-                id={userId}
+                id={userIdDetails}
                 onClose={closeUserInfoModal}
             />}
 

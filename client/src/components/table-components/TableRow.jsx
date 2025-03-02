@@ -8,6 +8,7 @@ export default function TableRow({
     email,
     phoneNumber,
     createdAt,
+    onEditButtonClick,
     onInfoButtonClick,
     onDeleteButtonClick }) {
 
@@ -29,7 +30,7 @@ export default function TableRow({
 
 
                 <td className="actions">
-                    <Button className="btn edit-btn" title="Edit">
+                    <Button className="btn edit-btn" title="Edit" onClick={() => onEditButtonClick(_id)}>
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -88,6 +89,3 @@ export default function TableRow({
 
     )
 }
-
-// When the button is clicked the modal should appear
-// The modal should have populated data about the user

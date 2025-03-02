@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-import userService from "../../fetch-api/userService";
+import userService from "../../services/userService";
 import dateParser from "../utils/dateParser";
 
 export default function UserDetailsModal({ id, onClose }) {
@@ -12,9 +12,8 @@ export default function UserDetailsModal({ id, onClose }) {
         (async () => {
             const user = await userService.getOne(id);
             setUserDetails(user);
-            console.log(user)
         })()
-    }, [])
+    }, [id])
 
 
     return (
@@ -48,7 +47,7 @@ export default function UserDetailsModal({ id, onClose }) {
                             <p>Phone Number: <strong>{userDetails.phoneNumber}</strong></p>
                             <p>
                                 Address:
-                                <strong> {userDetails.country}, {userDetails.city}, {userDetails.street} {userDetails.streetNumber}</strong>
+                                <strong> {userDetails.address?.country}, {userDetails.address?.city}, {userDetails.address?.street} {userDetails.address?.streetNumber}</strong>
                             </p>
 
                             <p>Created on: <strong>{dateParser(userDetails.createdAt)}</strong></p>

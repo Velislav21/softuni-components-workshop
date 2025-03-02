@@ -1,14 +1,15 @@
 import Button from "../button/Button"
 import InputField from "../input/InputField"
 
-export default function AddEditUserModal({ hideModal, action, actionFn }) {
+export default function AddEditUserModal({ id, hideModal, onCreate }) {
+    console.log(id)
     return (
         <div className="overlay">
             <div className="backdrop" onClick={hideModal}></div>
             <div className="modal">
                 <div className="user-container">
                     <header className="headers">
-                        <h2>{action === 'create' ? 'Create User' : 'Edit User'}</h2>
+                        <h2>{id !== null ? 'Edit User' : 'Create User'}</h2>
                         <Button className="btn close" onClick={hideModal}>
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="xmark"
                                 className="svg-inline--fa fa-xmark" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
@@ -99,9 +100,9 @@ export default function AddEditUserModal({ hideModal, action, actionFn }) {
                                 id="action-save"
                                 className="btn"
                                 type="submit"
-                                onClick={actionFn}
+                                onClick={onCreate}
                             >
-                                {action === 'create' ? 'Create': 'Edit'}</Button>
+                                {id !== null ? 'Edit': 'Create'}</Button>
                             <Button
                                 id="action-cancel"
                                 className="btn"

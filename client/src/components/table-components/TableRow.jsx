@@ -1,7 +1,15 @@
 import { useState } from "react";
 import Button from "../button/Button";
 
-export default function TableRow({ _id, firstName, lastName, email, phoneNumber, createdAt, onInfoButtonClick }) {
+export default function TableRow({
+    _id,
+    firstName,
+    lastName,
+    email,
+    phoneNumber,
+    createdAt,
+    onInfoButtonClick,
+    onDeleteButtonClick }) {
 
     return (
         <>
@@ -39,7 +47,7 @@ export default function TableRow({ _id, firstName, lastName, email, phoneNumber,
                         </svg>
                     </Button>
 
-                    <Button className="btn delete-btn" title="Delete">
+                    <Button className="btn delete-btn" title="Delete" onClick={() => onDeleteButtonClick(_id)}>
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -75,7 +83,7 @@ export default function TableRow({ _id, firstName, lastName, email, phoneNumber,
                         </svg>
                     </Button >
                 </td>
-            </tr>
+            </tr >
         </>
 
     )

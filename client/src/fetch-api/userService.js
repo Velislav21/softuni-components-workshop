@@ -12,7 +12,7 @@ export default {
         const request = await fetch(`${baseUrl}/${id}`)
 
         const data = await request.json();
-        return data
+        return { ...data, ...data.address }
     },
     async deleteUser(id) {
         await fetch(`${baseUrl}/${id}`, { method: 'delete' })

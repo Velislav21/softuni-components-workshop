@@ -45,7 +45,7 @@ export default function UserDetailsModal({ id, onClose }) {
                             <p>Phone Number: <strong>{userDetails.phoneNumber}</strong></p>
                             <p>
                                 Address:
-                                <strong> fix the data coming from db </strong>
+                                <strong> {userDetails.country}, {userDetails.city}, {userDetails.street} {userDetails.streetNumber}</strong>
                             </p>
 
                             <p>Created on: <strong>{userDetails.createdAt}</strong></p>

@@ -2,7 +2,6 @@ import Button from "../button/Button"
 import InputField from "../input/InputField"
 
 export default function AddEditUserModal({ id, hideModal, onCreate }) {
-    console.log(id)
     return (
         <div className="overlay">
             <div className="backdrop" onClick={hideModal}></div>
@@ -101,8 +100,9 @@ export default function AddEditUserModal({ id, hideModal, onCreate }) {
                                 className="btn"
                                 type="submit"
                                 onClick={onCreate}
+                                
                             >
-                                {id !== null ? 'Edit': 'Create'}</Button>
+                                {id !== null ? 'Edit' : 'Create'}</Button>
                             <Button
                                 id="action-cancel"
                                 className="btn"

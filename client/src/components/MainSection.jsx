@@ -22,7 +22,7 @@ export default function MainSection() {
     const [userIdDelete, setUserIdDelete] = useState(null);
 
 
-    function showInfoButtonModal(id) {
+    function showInfoModal(id) {
         setUserIdDetails(id);
     }
 
@@ -57,7 +57,6 @@ export default function MainSection() {
         setUserIdEdit(id);
     }
 
-
     function hideUserCreateModal() {
         setShowCreateUserModal(false)
     }
@@ -81,7 +80,7 @@ export default function MainSection() {
         <section className="card users-container">
             <SearchBar />
             <div className="table-wrapper">
-                {userIdEdit && <UserDetailsModal
+                {userIdDetails && <UserDetailsModal
                     id={userIdDetails}
                     onClose={closeUserInfoModal}
                 />}
@@ -101,7 +100,7 @@ export default function MainSection() {
                                 key={user._id}
                                 {...user}
                                 onEditButtonClick={showAddUserModal}
-                                onInfoButtonClick={showInfoButtonModal}
+                                onInfoButtonClick={showInfoModal}
                                 onDeleteButtonClick={showUserDeleteModal}
                             />
                         ))}
